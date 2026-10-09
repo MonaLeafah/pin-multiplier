@@ -1,25 +1,26 @@
 # Verification record
 
-Tested October 9, 2026 with Node 24.13.1 and the authenticated Ramona Chrome session.
+Tested October 9, 2026 with Node 24.13.1 and Ramona Chrome. This record separates observed behavior from future business validation.
 
 ## Automated checks
 
-Seven Node tests pass. They cover the seven unique angles and dates, leap-year and DST date boundaries, invalid dates, rejected unsafe URLs, incomplete inputs, escaped SVG text, exported dimensions, CSV quoting and formula protection, disclosure markers, and JSON restoration with corrupt-input rejection and review reset.
+Fifteen Node tests pass. They cover calendar boundaries, seven source-based angles, unsafe links, incomplete briefs, SVG escaping and finite text sizing, CSV quoting/formula protection, disclosure markers, saved-plan validation and review reset, unfinished-plan restoration, graphic completeness, blank trial outcomes, ZIP CRC32 known-answer data, and archive entry restrictions.
 
-JavaScript syntax checks pass. The sample export command writes seven SVG files, one CSV, and one JSON plan without external dependencies.
+JavaScript syntax checks pass. Sample generation produces seven SVGs plus CSV and JSON. The repository includes a three-OS GitHub Actions workflow with read-only permissions and pinned official actions. See the live Actions result for its execution state; local test success alone does not establish remote CI success.
 
 ## Browser observations
 
-- Desktop interface inspected visually at the browser’s normal size.
-- Mobile interface inspected at 390 × 844. DOM measurements reported page width 390 and viewport width 390.
-- Checking a pin’s review control changed the count from 0 to 1. Editing its headline changed the count back to 0.
-- The PNG button downloaded an actual PNG; independent file inspection confirmed 1000 × 1500 dimensions.
-- CSV and JSON buttons downloaded actual files with seven entries. The edited headline was present in both and matched.
-- Saved JSON was reopened through the paste-to-reopen control. The edited headline survived and all pins returned to Draft.
-- Browser file-chooser automation was prevented by the extension’s file-URL permission. The paste route was verified instead; no extension permission was changed.
+- Desktop layout visually inspected at a 1440 × 900 test window (1425 CSS pixels available after scrollbar); mobile at 390 × 844 (375 CSS pixels available). Page width matched the available viewport on both.
+- Keyboard Tab moved from article title to article link. Enter on an angle button selected the correct pin. Controls have labels, visible focus styles, and reduced-motion support.
+- Review count changed from 0 to 1; a headline edit returned it to 0.
+- A changed source title paused graphic/CSV exports. Building applied the new title; undo recovered the prior brief and pins.
+- An empty headline prevented PNG export with a specific error. An unfinished JSON plan reopened with its empty draft intact.
+- A real complete-packet download passed independent Python ZIP CRC validation: 18 files, seven PNGs at 1000 × 1500, seven SVGs, matching seven-row CSV/JSON plans, a seven-row trial tracker with blank outcomes, and instructions.
+- All seven downloaded PNGs were assembled into a contact sheet and visually inspected. No clipping was visible in the fictional sample.
+- Saved JSON reopened through the paste control. Corrupt JSON is handled with a visible recovery message. File-picker automation remains limited by the browser extension's file-URL permission; the paste route was verified without changing that permission.
 
-## Scope and limits
+## Evidence limits
 
-This is a functional demonstration using fictional content. It has no customer validation, observed campaign result, revenue history, attribution study, or measured time savings. Planned dates are not published schedules. CSV is a general spreadsheet format, not a claim of compatibility with a platform’s direct importer.
+The original fictional content has no traffic, sales, conversions, or measured time savings. Calendar dates are plans. CSV is a spreadsheet format, not a direct platform-import promise. A results tracker supports a trial; it does not establish attribution or ROI.
 
-No AI call, remote image processing, account registration, automatic publishing, or analytics is part of the app.
+Contrast, labeling, keyboard entry, touch target sizes, and responsive layout were checked as practical accessibility basics. A complete screen-reader audit, every browser/font combination, and formal WCAG conformance were not established. Extreme-text unit checks establish finite sizing; they do not replace visual checks with every language and font.

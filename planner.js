@@ -16,9 +16,13 @@
   }
   function addDays(value, n) { const date = validateDate(value); date.setUTCDate(date.getUTCDate() + n); return date.toISOString().slice(0, 10); }
   function validate(input) {
+    if (!input || typeof input !== 'object') throw new Error('Add an article brief.');
     const title = clean(input.title, 100), audience = clean(input.audience, 120), summary = clean(input.summary, 300);
-    const points = (Array.isArray(input.points) ? input.points : String(input.points ?? '').split('\n')).map(x => clean(x, 160)).filter(Boolean).slice(0, 6);
+    const rawPoints=(Array.isArray(input.points) ? input.points : String(input.points ?? '').split('\n')).map(x=>String(x).trim()).filter(Boolean);
+    if(rawPoints.length>6||rawPoints.some(x=>x.length>160))throw new Error('Use three to six points, with no more than 160 characters per point.');
+    const points = rawPoints.map(x => clean(x, 160));
     if (!title || !summary || points.length < 3) throw new Error('Add a title, a main idea, and at least three useful points.');
+    if(String(input.url).length>2048)throw new Error('Use an article link shorter than 2048 characters.');
     let url;
     try { url = new URL(String(input.url).trim()); } catch { throw new Error('Use a full https:// or http:// article link.'); }
     if (!['https:', 'http:'].includes(url.protocol) || url.username || url.password) throw new Error('Use an article link without a username or password.');
@@ -29,12 +33,12 @@
     const brief = validate(input), p = brief.points;
     const copy = [
       [brief.title, brief.summary],
-      ['Start with one useful thing', p[0]],
-      ['A little checklist to keep', p.slice(0, 3).join(' ')],
-      ['One detail worth keeping', p[1]],
-      ['Try one small change', p[2]],
-      ['Make space for the main idea', brief.summary],
-      ['Save this for your next idea', brief.title + '. ' + p[0]]
+      [p[0], brief.summary],
+      [brief.title + ': the checklist', p.slice(0, 3).join(' ')],
+      [p[1], brief.summary],
+      [p[2], p[0]],
+      [brief.summary, p.slice(1).join(' ')],
+      ['Keep this: ' + brief.title, p.join(' ')]
     ];
     return { version: 1, brief, pins: copy.map(([headline, description], i) => ({
       id: i + 1, angle: angles[i], headline: clean(headline,100), description: clean(description,350),
@@ -55,9 +59,12 @@
     const dark = pin.id % 3 === 1, bg = dark ? '#132e27' : '#f5efe3', ink = dark ? '#f5efe3' : '#142b25', accent = dark ? '#bdd5aa' : '#31694e';
     const title = wrap(clean(pin.headline, 100), 18), body = wrap(clean(pin.description, 350), 42);
     const titleStep = Math.min(100, 500 / title.length), bodyStep = Math.min(42, 360 / body.length);
+    const lineWidth = lines => Math.max(1, ...lines.map(line => Array.from(line).reduce((n,c) => n + (/[MW@%]/.test(c) ? 1.05 : /[il.,'! ]/.test(c) ? .35 : c.codePointAt(0) > 255 ? 1.1 : .7),0)));
+    const titleSize = Math.min(88, titleStep * .86, 820 / lineWidth(title));
+    const bodySize = Math.min(32, bodyStep * .8, 820 / lineWidth(body));
     const heading = title.map((line, i) => '<tspan x="84" y="' + (295 + i * titleStep) + '">' + xml(line) + '</tspan>').join('');
     const text = body.map((line, i) => '<tspan x="84" y="' + (920 + i * bodyStep) + '">' + xml(line) + '</tspan>').join('');
-    return '<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500" role="img" aria-labelledby="title description"><title id="title">' + xml(pin.headline) + '</title><desc id="description">' + xml(pin.alt) + '</desc><rect width="1000" height="1500" fill="' + bg + '"/><path d="M84 175H916" stroke="' + accent + '" stroke-width="2"/><text x="84" y="117" font-family="Arial,sans-serif" font-size="24" letter-spacing="5" fill="' + ink + '">MONA’S MEDIA / FIELD NOTES</text><text x="84" y="225" font-family="Arial,sans-serif" font-size="24" letter-spacing="3" fill="' + accent + '">' + xml(pin.angle.toUpperCase()) + '</text><text font-family="Georgia,serif" font-size="' + Math.min(88, titleStep * .86) + '" fill="' + ink + '">' + heading + '</text><path d="M84 805Q500 665 916 805M84 836Q500 696 916 836" fill="none" stroke="' + accent + '" stroke-width="3"/><text font-family="Arial,sans-serif" font-size="' + Math.min(32, bodyStep * .8) + '" fill="' + ink + '">' + text + '</text><path d="M84 1340H916" stroke="' + accent + '" stroke-width="2"/><text x="84" y="1400" font-family="Arial,sans-serif" font-size="25" fill="' + ink + '">READ THE FULL NOTE</text><text x="916" y="1400" text-anchor="end" font-family="Georgia,serif" font-size="38" fill="' + ink + '">0' + pin.id + '</text></svg>';
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500" role="img" aria-labelledby="title description"><title id="title">' + xml(pin.headline) + '</title><desc id="description">' + xml(pin.alt) + '</desc><rect width="1000" height="1500" fill="' + bg + '"/><path d="M84 175H916" stroke="' + accent + '" stroke-width="2"/><text x="84" y="117" font-family="Arial,sans-serif" font-size="24" letter-spacing="5" fill="' + ink + '">MONA’S MEDIA / FIELD NOTES</text><text x="84" y="225" font-family="Arial,sans-serif" font-size="24" letter-spacing="3" fill="' + accent + '">' + xml(pin.angle.toUpperCase()) + '</text><text font-family="Georgia,serif" font-size="' + titleSize + '" fill="' + ink + '">' + heading + '</text><path d="M84 805Q500 665 916 805M84 836Q500 696 916 836" fill="none" stroke="' + accent + '" stroke-width="3"/><text font-family="Arial,sans-serif" font-size="' + bodySize + '" fill="' + ink + '">' + text + '</text><path d="M84 1340H916" stroke="' + accent + '" stroke-width="2"/><text x="84" y="1400" font-family="Arial,sans-serif" font-size="25" fill="' + ink + '">READ THE FULL NOTE</text><text x="916" y="1400" text-anchor="end" font-family="Georgia,serif" font-size="38" fill="' + ink + '">0' + pin.id + '</text></svg>';
   }
   function csvCell(value) {
     let s = String(value ?? '');
@@ -74,9 +81,17 @@
     base.pins = input.pins.map((pin, i) => {
       if (!pin || pin.id !== i + 1) throw new Error('The saved pin sequence is invalid.');
       const result = { ...base.pins[i], headline: clean(pin.headline,100), description: clean(pin.description,350), alt: clean(pin.alt,500), disclosure: clean(pin.disclosure,300), plannedDate: addDays(String(pin.plannedDate),0), state:'Draft' };
-      if (!result.headline || !result.description || !result.alt) throw new Error('Every saved pin needs a headline, description, and alt text.');
+      if (['headline','description','alt','disclosure'].some(key => typeof pin[key] !== 'string')) throw new Error('The saved copy fields are invalid.');
       return result;
     }); return base;
   }
-  return { sample, generate, validate, addDays, svg, csv, csvCell, xml, wrap, importPlan };
+  function assertExportable(pins) {
+    const incomplete = pins.find(pin => !pin.headline.trim() || !pin.description.trim() || !pin.alt.trim());
+    if (incomplete) throw new Error('Complete the headline, supporting copy, and alt text for pin 0' + incomplete.id + ' before exporting graphics. JSON can save unfinished work.');
+  }
+  function trialCsv(plan) {
+    const keys = ['pin','angle','plannedDate','actualPublishedDate','impressions','outboundClicks','saves','attributedRevenue','productionMinutes','notes'];
+    return [keys.join(','),...plan.pins.map(p=>[p.id,p.angle,p.plannedDate,'','','','','','',''].map(csvCell).join(','))].join('\r\n')+'\r\n';
+  }
+  return { sample, generate, validate, addDays, svg, csv, csvCell, xml, wrap, importPlan, assertExportable, trialCsv };
 });
