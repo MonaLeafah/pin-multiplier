@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Pin Multiplier · Mona’s Media</title><meta name="description" content="Turn an article brief into seven editable Pinterest concepts. A local Mona’s Media workflow demo."><link rel="stylesheet" href="style.css"><script src="planner.js" defer></script><script src="app.js" defer></script></head>
+<body>
+<a class="skip" href="#workspace">Skip to workspace</a>
+<header><a class="wordmark" href="https://monasmedia.com/">Mona’s Media<span>FIELD NOTES / WORKING SYSTEMS</span></a><a class="quiet-link" href="case-study.html">Behind the system ↗</a></header>
+<main id="workspace">
+<div class="intro"><div><p class="eyebrow">A CONTENT DISTRIBUTION WORKBENCH</p><h1>The Pin Multiplier<span>One idea. Seven ways in.</span></h1></div><p class="intro-note">Build a set of editable pin drafts from your article brief. Keep the useful bits. Give each one a different job.</p></div>
+<div class="workbench">
+<aside class="source"><div class="section-title"><span class="number">01</span><h2>Your source</h2></div><p class="muted">Start with a brief you have permission to use.</p>
+<form id="brief-form">
+<label for="source-title">Article title</label><input id="source-title" name="title" maxlength="100" required>
+<label for="source-url">Article link</label><input id="source-url" name="url" type="url" required>
+<label for="source-audience">Who is it for?</label><input id="source-audience" name="audience" maxlength="120">
+<label for="source-summary">The main idea</label><textarea id="source-summary" name="summary" rows="3" maxlength="300" required></textarea>
+<label for="source-points">Three to six useful points</label><textarea id="source-points" name="points" rows="4" required></textarea><p class="hint">One point per line. Drafts use your words.</p>
+<label for="source-date">First planned date</label><input id="source-date" name="start" type="date" required>
+<label class="check"><input name="affiliate" id="source-affiliate" type="checkbox"> This involves an affiliate or paid relationship</label>
+<button class="primary" type="submit">Build seven drafts <span>↗</span></button><button class="text-button" id="load-sample" type="button">Reset to the fictional example</button>
+<p id="source-error" class="error" role="alert"></p>
+</form><div class="privacy"><span aria-hidden="true">●</span><p><strong>Your brief stays here.</strong> This tool runs locally. It does not store your work after you close or reload the page. Download the JSON to keep it.</p></div></aside>
+<section class="results" aria-label="Pin drafts">
+<div class="results-heading"><div class="section-title"><span class="number">02</span><h2>Shape the set</h2></div><p id="review-count">0 of 7 reviewed</p></div>
+<div id="pin-list" class="pin-list" aria-label="Choose a pin"></div>
+<div class="pin-workspace"><div class="visual"><img id="pin-preview" alt=""><p class="hint">1000 × 1500 · editable text graphic</p></div>
+<div class="inspector"><p id="selected-angle" class="eyebrow"></p><h3>Give this pin its own voice.</h3>
+<label for="pin-headline">Headline</label><textarea id="pin-headline" rows="3" maxlength="100"></textarea>
+<label for="pin-description">Description / supporting copy</label><textarea id="pin-description" rows="4" maxlength="350"></textarea>
+<label for="pin-alt">Alt text</label><textarea id="pin-alt" rows="3" maxlength="500"></textarea>
+<div id="disclosure-fields" hidden><p class="disclosure">Add the disclosure that describes your actual relationship. Review it before publishing.</p><label for="pin-disclosure-copy">Relationship disclosure</label><textarea id="pin-disclosure-copy" rows="2" maxlength="300"></textarea></div><label class="check"><input id="pin-reviewed" type="checkbox"> I reviewed this pin’s copy, alt text, and disclosure</label>
+<div class="downloads"><button id="download-png" type="button">Download PNG ↗</button><button id="download-svg" type="button">Editable SVG ↗</button></div><p id="export-error" class="error" role="alert"></p>
+</div></div>
+<details class="schedule"><summary>03 &nbsp; Review the plan dates <span>+</span></summary><p class="muted">An editable starting cadence: day 0, 2, 4, 7, 10, 14, and 21. Dates are a plan; nothing is scheduled or published.</p><div id="schedule-list"></div></details>
+<div class="export-bar"><div><h3>Take the whole plan with you.</h3><p class="muted">CSV for a spreadsheet. JSON to save and reopen here.</p></div><div class="downloads"><button id="download-csv" type="button">Export CSV ↗</button><button id="download-json" class="primary" type="button">Save JSON ↗</button></div></div><label class="import-label" for="import-json">Reopen a saved plan</label><input id="import-json" type="file" accept=".json,application/json">
+<details class="schedule"><summary>Paste a saved plan instead <span>+</span></summary><label for="restore-json">Saved plan JSON</label><textarea id="restore-json" rows="4" maxlength="100000" placeholder="Paste the contents of your saved JSON plan"></textarea><button id="restore-plan" class="text-button" type="button">Reopen this plan</button></details><p id="status" class="status" role="status" aria-live="polite"></p>
+</section></div>
+<section class="context"><p class="eyebrow">THE HUMAN PART</p><h2>A system leaves room<br>for your judgment.</h2><p>Each angle is a starting point. Check that the copy matches your article, the visual says what you mean, and the destination earns the click. The example is fictional; it has no performance history.</p><a href="https://monasmedia.com/thefieldnotes/" class="quiet-link">Explore an audit with Mona ↗</a></section>
+</main><footer><span>Mona’s Media · The Pin Multiplier</span><span>Original workflow demo · v1.0</span></footer>
+</body></html>

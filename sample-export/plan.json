@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "brief": {
+    "title": "Make room for a little creativity",
+    "audience": "Creators working in small spaces",
+    "summary": "A creative corner can begin with one useful surface and a few tools you love.",
+    "points": [
+      "Choose one useful surface.",
+      "Keep the tools you reach for close by.",
+      "Leave a little space for work in progress."
+    ],
+    "url": "https://example.com/creative-corner",
+    "start": "2026-10-12",
+    "affiliate": false
+  },
+  "pins": [
+    {
+      "id": 1,
+      "angle": "The big idea",
+      "headline": "Make room for a little creativity",
+      "description": "A creative corner can begin with one useful surface and a few tools you love.",
+      "alt": "Editorial text graphic reading “Make room for a little creativity”. A creative corner can begin with one useful surface and a few tools you love.",
+      "link": "https://example.com/creative-corner",
+      "audience": "Creators working in small spaces",
+      "plannedDate": "2026-10-12",
+      "disclosure": "",
+      "state": "Draft"
+    },
+    {
+      "id": 2,
+      "angle": "Start here",
+      "headline": "Start with one useful thing",
+      "description": "Choose one useful surface.",
+      "alt": "Editorial text graphic reading “Start with one useful thing”. Choose one useful surface.",
+      "link": "https://example.com/creative-corner",
+      "audience": "Creators working in small spaces",
+      "plannedDate": "2026-10-14",
+      "disclosure": "",
+      "state": "Draft"
+    },
+    {
+      "id": 3,
+      "angle": "The checklist",
+      "headline": "A little checklist to keep",
+      "description": "Choose one useful surface. Keep the tools you reach for close by. Leave a little space for work in progress.",
+      "alt": "Editorial text graphic reading “A little checklist to keep”. Choose one useful surface. Keep the tools you reach for close by. Leave a little space for work in progress.",
+      "link": "https://example.com/creative-corner",
+      "audience": "Creators working in small spaces",
+      "plannedDate": "2026-10-16",
+      "disclosure": "",
+      "state": "Draft"
+    },
+    {
+      "id": 4,
+      "angle": "A useful detail",
+      "headline": "One detail worth keeping",
+      "description": "Keep the tools you reach for close by.",
+      "alt": "Editorial text graphic reading “One detail worth keeping”. Keep the tools you reach for close by.",
+      "link": "https://example.com/creative-corner",
+      "audience": "Creators working in small spaces",
+      "plannedDate": "2026-10-19",
+      "disclosure": "",
+      "state": "Draft"
+    },
+    {
+      "id": 5,
+      "angle": "One small action",
+      "headline": "Try one small change",
+      "description": "Leave a little space for work in progress.",
+      "alt": "Editorial text graphic reading “Try one small change”. Leave a little space for work in progress.",
+      "link": "https://example.com/creative-corner",
+      "audience": "Creators working in small spaces",
+      "plannedDate": "2026-10-22",
+      "disclosure": "",
+      "state": "Draft"
+    },
+    {
+      "id": 6,
+      "angle": "The perspective",
+      "headline": "Make space for the main idea",
+      "description": "A creative corner can begin with one useful surface and a few tools you love.",
+      "alt": "Editorial text graphic reading “Make space for the main idea”. A creative corner can begin with one useful surface and a few tools you love.",
+      "link": "https://example.com/creative-corner",
+      "audience": "Creators working in small spaces",
+      "plannedDate": "2026-10-26",
+      "disclosure": "",
+      "state": "Draft"
+    },
+    {
+      "id": 7,
+      "angle": "Save for later",
+      "headline": "Save this for your next idea",
+      "description": "Make room for a little creativity. Choose one useful surface.",
+      "alt": "Editorial text graphic reading “Save this for your next idea”. Make room for a little creativity. Choose one useful surface.",
+      "link": "https://example.com/creative-corner",
+      "audience": "Creators working in small spaces",
+      "plannedDate": "2026-11-02",
+      "disclosure": "",
+      "state": "Draft"
+    }
+  ]
+}

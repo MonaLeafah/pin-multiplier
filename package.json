@@ -1,0 +1,1 @@
+{"name":"monas-media-pin-multiplier","version":"1.0.0","private":true,"description":"Original local content planning demo with fictional sample content","scripts":{"test":"node --test test/*.test.cjs","start":"node server.cjs","export:sample":"node export-sample.cjs"},"license":"MIT"}
