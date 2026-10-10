@@ -1,4 +1,4 @@
-# One article. Seven ways in.
+# Make seven pins from one article
 
 Start with an article you have permission to reuse. Write down its title, destination, audience, main idea, and three useful points. Keep the article’s actual claims and limitations intact.
 

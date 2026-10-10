@@ -1,6 +1,6 @@
 # The Pin Multiplier
 
-An original Mona’s Media workbench for turning one article brief into seven editable pin concepts.
+Turn one article brief into seven editable pin drafts and download the graphics with a publishing plan. Built by Mona’s Media.
 
 **[Try the live workbench →](https://monaleafah.github.io/pin-multiplier/)** · [Read the case study](https://monaleafah.github.io/pin-multiplier/case-study.html) · [Starter guide](starter-guide.md)
 
@@ -33,7 +33,7 @@ Open `index.html` directly in a modern browser. There is no installation, accoun
 
 ## The example
 
-The creative-corner article and `example.com` destination are fictional. The demo demonstrates workflow output; it makes no claims about traffic, revenue, conversions, or time savings.
+The creative-corner article and `example.com` destination are fictional. The example shows the files and review workflow. Traffic, revenue, conversions, and time savings have not been measured.
 
 ## Privacy and boundaries
 
